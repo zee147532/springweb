@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List Customer</title>
+    <style>
+        a {
+            text-decoration: none;
+        }
+        a:hover {
+          color: darkblue;
+        }
+    </style>
+
+</head>
+<body>
+<h2>Spring Demo</h2>
+<form th:action="@{/list}">
+    Filter: <input type="text" name="keyword" id="keyword" size="50" th:value="${keyword}" required />
+    &nbsp;
+    <input type="submit" value="Search" />
+    &nbsp;
+    <input type="button" value="Clear" id="btnClear" onclick="clearSearch()" />
+    <script type="text/javascript">
+        function clearSearch() {
+            window.location = "[[@{/list}]]";
+        }
+    </script>
+</form>
+<table cellpadding="0" cellspacing="2px">
+    <thead>
+    <tr style="background: aquamarine">
+        <th width="40px">ID</th>
+        <th width="200px">Name</th>
+        <th width="60px">Age</th>
+        <th width="120px">Phone Number</th>
+        <th width="100px">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="item: ${list}">
+        <td th:text="${item.id}" />
+        <td th:text="${item.name}" />
+        <td th:text="${item.age}" />
+        <td th:text="${item.phoneNumber}" />
+        <td>
+            <a th:href="@{/edit(id=${item.id})}">Edit</a>
+            <a style="margin-left: 10px" th:href="@{/delete(id=${item.id})}">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<button onclick="window.location.href='/add'">Add Customer</button>
+<button onclick="window.location.href='/'">Home</button>
+
+</body>
+</html>

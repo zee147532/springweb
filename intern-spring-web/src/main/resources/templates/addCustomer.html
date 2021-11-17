@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Customer</title>
+
+</head>
+<body>
+    <h2>New Customer</h2>
+    <form th:object="${customer}" th:action="@{/save}" method="post">
+        <table>
+            <tr>
+                <td>Name</td>
+                <td>Age</td>
+                <td>Phone Number</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><input type="text" th:field="*{name}" placeholder="Name"></td>
+                <td><input type="text" th:field="*{age}" placeholder="Age"></td>
+                <td><input type="text" th:field="*{phoneNumber}"></td>
+                <td><input type="submit" value="Save"></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

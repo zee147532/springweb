@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: "intern-spring-web"
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://${MYSQL_URL:localhost}:${MYSQL_PORT:3306}/${MYSQL_DATABASE:customer_db}?serverTimezone=UTC
+    password: ${MYSQL_PASSWORD:zee1822001}
+    username: ${MYSQL_USERNAME:root}
+  jpa:
+    database-platform: org.hibernate.dialect.MariaDB103Dialect
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        show_sql: ${DEBUG:false}
+        format_sql: ${DEBUG:false}
+server:
+  port: ${PORT:8080}
+
+logging:
+  level:
+    org:
+      hibernate:
+        type: ${LOG_LEVEL:info}
